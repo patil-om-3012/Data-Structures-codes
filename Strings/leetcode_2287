@@ -1,0 +1,23 @@
+//Leetcode 2287. Rearrange Characters to Make Target String
+class Solution {
+public:
+    int rearrangeCharacters(string s, string target) {
+        unordered_map<char,int> stringS;
+        unordered_map<char,int> targetString;
+
+        for(char c:s){
+            stringS[c]++;
+        }
+
+        for(char c:target){
+            targetString[c]++;
+        }
+
+        int ans = INT_MAX;
+        for(char c:target){
+            ans = min(ans,stringS[c]/targetString[c]);
+        }
+
+        return ans;
+    }
+};
